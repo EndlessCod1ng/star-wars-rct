@@ -1,33 +1,41 @@
 import { getApiResource } from "@/shared/utils/getApiResource";
 import s from "./PeoplePage.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { API_PEOPLE } from "@/shared/constants/constants";
 interface PeoplePageProps {
   className?: string;
 }
 export const PeoplePage = ({ className }: PeoplePageProps) => {
-  // (async () => {
-  //   const body = await getApiResource(SWAPI_ROOT + SWAPI_PEOPLE);
-  //   return body;
-  // })();
+  const [people, setPeople] = useState<any>(null);
 
-  // const getResource = async (url: string) => {
-  //   const res = await getApiResource(url);
+  const getResource = async (url: string) => {
+    const res = await getApiResource(url);
 
-  //   if (res !== false) {
-  //     const peopleList = res.map((element) => {
-  //       console.log(element.name, element.url);
-  //     });
-  //   }
-  // };
-  // useEffect(() => {
-  //   getApiResource(API_PEOPLE);
-  // }, []);
+    if (res !== false && res !== true) {
+      const peopleList = res.results.map(({ name, url }) => {
+        console.log(name, url);
+        return {
+          name,
+          url,
+        };
+      });
+      setPeople(peopleList);
+    }
+  };
+  useEffect(() => {
+    getResource(API_PEOPLE);
+  }, []);
 
   return (
     <div className={classNames(s.peoplePage, {}, [className])}>
-      <div>PeoplePage</div>
+      {people && (
+        <ul>
+          {people.map(({ name, url }) => {
+            return <li key={url}>{name}</li>;
+          })}
+        </ul>
+      )}
     </div>
   );
 };
