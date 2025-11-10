@@ -1,5 +1,5 @@
-const SWAPI_ROOT = `https://swapi.dev/api/`;
-const SWAPI_PEOPLE = `people/`;
+export const SWAPI_ROOT = `https://swapi.dev/api/`;
+export const SWAPI_PEOPLE = `people/`;
 
 interface GetApiResourceResult {
   birth_year: string;
@@ -67,5 +67,7 @@ export const getApiResource = async (url: string): Promise<boolean | GetApiResou
 //   );
 (async () => {
   const body = await getApiResource(SWAPI_ROOT + SWAPI_PEOPLE);
+  console.log(body);
+
   return body;
 })();
