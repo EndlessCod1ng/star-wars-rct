@@ -1,1 +1,2 @@
-export { PeopleItem } from "./ui/PeopleItem/PeopleItem";
+export { PeopleList } from "./ui/PeopleList/PeopleList";
+

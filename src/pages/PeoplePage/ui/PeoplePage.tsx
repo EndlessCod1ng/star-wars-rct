@@ -4,10 +4,11 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useEffect, useState } from "react";
 import { API_PEOPLE } from "@/shared/constants/constants";
 import { getPeopleId, getPeopleImage } from "@/shared/services/getPeopleData";
+import { PeopleList } from "@/entities/People";
 interface PeoplePageProps {
   className?: string;
 }
-interface PeopleListType {
+export interface PeopleListType {
   name: string;
   id: string;
   img: string;
@@ -22,9 +23,9 @@ export const PeoplePage = ({ className }: PeoplePageProps) => {
       const peopleList = res.results.map(({ name, url }) => {
         const id = getPeopleId(url);
         const img = getPeopleImage(id);
-        console.log(name, img);
+        // console.log(name, img);
 
-        console.log("id", id);
+        // console.log("id", id);
         return {
           id,
           name,
@@ -32,7 +33,6 @@ export const PeoplePage = ({ className }: PeoplePageProps) => {
         };
       });
       setPeople(peopleList);
-      // console.log(peopleList);
     }
   };
 
@@ -42,21 +42,7 @@ export const PeoplePage = ({ className }: PeoplePageProps) => {
 
   return (
     <div className={classNames(s.peoplePage, {}, [className])}>
-      {people && (
-        <ul>
-          {people.map(({ name, id, img }) => {
-            return (
-              <li key={id}>
-                <img
-                  src={img}
-                  alt="img"
-                />
-                <div>{name}</div>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <PeopleList list={people} />
     </div>
   );
 };
