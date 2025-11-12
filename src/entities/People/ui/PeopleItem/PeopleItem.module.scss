@@ -1,14 +1,14 @@
 .peopleItem {
   width: 190px;
-  margin: 20px;
-  border-radius: 3px;
-  background-color: white;
+  margin: var(--spacing-medium);
+  border-radius: var(--b-rad-small);
+  background-color: var(--color-white);
   cursor: pointer;
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  color: var(--color-black);
   text-align: center;
 }
 
@@ -17,4 +17,5 @@
   height: 260px;
   object-fit: cover;
   object-position: top center;
+  border-radius: var(--b-rad-small) var(--b-rad-small) 0 0;
 }

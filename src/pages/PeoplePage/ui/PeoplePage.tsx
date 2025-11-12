@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { API_PEOPLE } from "@/shared/constants/constants";
 import { getPeopleId, getPeopleImage } from "@/shared/services/getPeopleData";
 import { PeopleList } from "@/entities/People";
+
 interface PeoplePageProps {
   className?: string;
 }
@@ -15,6 +16,7 @@ export interface PeopleListType {
 }
 export const PeoplePage = ({ className }: PeoplePageProps) => {
   const [people, setPeople] = useState<PeopleListType[] | null>(null);
+  const [errorApi, setErrorApi] = useState<boolean>(false);
 
   const getResource = async (url: string) => {
     const res = await getApiResource(url);
@@ -33,16 +35,24 @@ export const PeoplePage = ({ className }: PeoplePageProps) => {
         };
       });
       setPeople(peopleList);
+      setErrorApi(false);
+    } else {
+      setErrorApi(true);
     }
   };
 
   useEffect(() => {
     getResource(API_PEOPLE);
   }, []);
-
   return (
-    <div className={classNames(s.peoplePage, {}, [className])}>
-      <PeopleList list={people} />
-    </div>
+    <>
+      {errorApi ? (
+        <div className={s.error}>error</div>
+      ) : (
+        <div className={classNames(s.peoplePage, {}, [className])}>
+          <PeopleList list={people} />
+        </div>
+      )}
+    </>
   );
 };
