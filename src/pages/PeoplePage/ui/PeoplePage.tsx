@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { API_PEOPLE } from "@/shared/constants/constants";
 import { getPeopleId, getPeopleImage } from "@/shared/services/getPeopleData";
 import { PeopleList } from "@/entities/People";
-
 interface PeoplePageProps {
   className?: string;
 }
@@ -55,4 +54,5 @@ export const PeoplePage = ({ className }: PeoplePageProps) => {
       )}
     </>
   );
+
 };
