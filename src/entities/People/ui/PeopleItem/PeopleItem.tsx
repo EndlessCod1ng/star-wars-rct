@@ -7,20 +7,18 @@ interface PeopleItemProps {
 }
 export const PeopleItem = ({ name, img, className }: PeopleItemProps) => {
   return (
-    <div className={classNames(s.peopleItem, {}, [className])}>
-      <li className={classNames(s.peopleItem, {}, [className])}>
-        <a
-          className={s.link}
-          href="#"
-        >
-          <img
-            className={s.photo}
-            src={img}
-            alt="img"
-          />
-          <p>{name}</p>
-        </a>
-      </li>
-    </div>
+    <li className={classNames(s.peopleItem, {}, [className])}>
+      <a
+        className={s.link}
+        href="#"
+      >
+        <img
+          className={s.photo}
+          src={img}
+          alt={name}
+        />
+        <p>{name}</p>
+      </a>
+    </li>
   );
 };

@@ -11,6 +11,10 @@ export const API_PEOPLE = HTTPS + SWAPI_ROOT + SWAPI_PEOPLE;
 const VISUAL_GUIDE_ROOT_IMG = "https://starwars-visualguide.com/assets/img/";
 const VISUAL_GUIDE_PEOPLE = "characters";
 export const VISUAL_GUIDE_IMG_EXTENSION = ".jpg";
-export const URL_IMG_PERSON = VISUAL_GUIDE_ROOT_IMG + VISUAL_GUIDE_PEOPLE
+export const URL_IMG_PERSON = VISUAL_GUIDE_ROOT_IMG + VISUAL_GUIDE_PEOPLE;
+
+// local
+export const IMG_ROOT_PATH_LOCAL = "";
+export const IMG_EXTENSION_LOCAL = ".png"
 
 

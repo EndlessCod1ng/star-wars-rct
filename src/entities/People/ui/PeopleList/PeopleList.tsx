@@ -2,10 +2,12 @@ import type { PeopleListType } from "@/pages/PeoplePage/ui/PeoplePage";
 import s from "./PeopleList.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { PeopleItem } from "../PeopleItem/PeopleItem";
+
 interface PeopleListProps {
   list: PeopleListType[] | null;
   className?: string;
 }
+
 export const PeopleList = ({ list, className }: PeopleListProps) => {
   if (list === null) {
     return (
